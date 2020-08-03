@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+    <!-- Site Metas -->
+    <title>SpielScribe || Deliver Prescription</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Pogo Slider CSS -->
+    <link rel="stylesheet" href="css/pogo-slider.min.css">
+	  <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98" onload="checkAccess()" style="visibility:hidden;">
+
+	
+	<!-- Start header -->
+	<header class="top-header">
+		<nav class="navbar header-nav navbar-expand-lg">
+            <div class="container">
+				<a class="navbar-brand"><img src="images/SpielScribe.jpg" alt="image"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link active" href="connectDoctors.html">DASHBOARD</a></li>
+                        <li>
+                          <a class="nav-link" href="Analysis.html">Analysis</a>
+                        </li>
+                        <li><a class="nav-link" href="prescription.html">RECORD PRESCRIPTION</a></li>
+                        <li><a class="nav-link" href="records.html">SEARCH PATIENT</a></li>
+                        <li><a class="nav-link" id="logout" href="">SIGN OUT</a></li>
+                    </ul>
+                </div>
+                <span class="navbar-text" id="nav-doctorEmail">
+                  Doctor-email
+                </span>
+            </div>
+        </nav>
+	</header>
+	<!-- End header -->
+    
+  <!-- Write your code here -->
+    <div class="container">
+    <form>
+        <div class="form-row">
+          
+          <div class="form-group col-md-3">
+            <label for="inputFirstName">First name</label>
+            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" value="">
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="inputLastName">Last name</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Last name" value="">
+          </div>
+          
+          <div class="form-group col-md-2">
+            <label for="inputGender">Gender</label>
+            <input type="text" class="form-control" id="inputGender" placeholder="Gender" value="">
+          </div>
+          
+          <div class="form-group col-md-2">
+            <label for="inputAge">Age</label>
+            <input type="text" class="form-control" id="inputAge" placeholder="Age" value=0>
+          
+          </div>
+
+          
+        
+        </div>
+        
+        <div class="form-group">
+          <label for="inputSymptoms">Symptoms</label>
+          <input type="text" class="form-control" id="inputSymptoms" placeholder="Symptoms.." value="">
+        </div>
+
+        <div class="form-group">
+          <label for="inputDiagnosis">Diagnosis</label>
+          <input type="text" class="form-control" id="inputDiagnosis" placeholder="Diagnosis.." value="">
+        </div>
+        
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="inputPrescription">Prescription</label>
+                <textarea class="form-control " id="inputPrescription" placeholder="Prescription.." required></textarea>
+              </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputAdvice">Advice</label>
+            <input type="text" class="form-control" id="inputAdvice" placeholder="Advice.." value="">
+        </div>
+        <div class="form-row">
+          
+        <div class="form-group col-md-4">
+          <label for="inputPatientEmail">Delivery email address</label>
+          <input type="email" class="form-control" id="inputPatientEmail" placeholder="Patient's email address" value="">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputMobileNumber">Mobile-Number</label>
+          <input type="text" class="form-control" id="inputMobileNumber" placeholder="Mobile-Number" value=0>
+        
+        </div>
+        </div>>
+
+        <button type="button" class="btn btn-primary" onclick="send()">SEND</button>
+        <button type="button" class="btn btn-primary">EDIT</button>
+
+      </form>
+    </div>
+	
+	<a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.pogo-slider.min.js"></script> 
+	<script src="js/slider-index.js"></script>
+	<script src="js/smoothscroll.js"></script>
+	<script src="js/TweenMax.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+	<script src="js/isotope.min.js"></script>	
+	<script src="js/images-loded.min.js"></script>	
+    <script src="js/custom.js"></script>
+
+    <script src="scripts/deliver.js"></script>
+    <script src="scripts/auth.js"></script>
+</body>
+</html>
