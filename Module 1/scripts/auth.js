@@ -14,21 +14,6 @@ const firebaseConfig = {
   const auth=firebase.auth();
   const db = firebase.firestore();
 
-  //for pdf store and generate;
-  // const storage = firebase.storage();
-  
-  // const storageRef= storage.refFromURL('gs://fir-85641.appspot.com')
-
-  // function pdf(){
-  //   storageRef.child('correct.png').getDownloadURL().then(function(url) {
-  //     // `url` is the download URL for 'images/stars.jpg'
-  //     console.log(url);
-  //     // This can be downloaded directly:
-  //   }).catch(function(error) {
-  //     // Handle any errors
-  //   });
-  // }
-
   const logout = document.querySelector('#logout');
   logout.addEventListener('click', (e) => {
     console.log("Logging out")
@@ -77,12 +62,10 @@ const firebaseConfig = {
       // ...
     } else {
       // User is signed out.
-      // ...
       uid=null;
       email=null;
       window.localStorage.setItem("uid",uid);
     }
-    // ...
   });
 
 
@@ -91,10 +74,8 @@ const firebaseConfig = {
   }
 
   function checkAccess(){
-    //x=getuid();
     body=document.getElementById("home");
     sleep(2000).then(() => { 
-      //console.log("heeeeeereeeeee",getuid());
     if(getuid()!=null){
         console.log("here");
         body.style.visibility="visible";
@@ -102,10 +83,6 @@ const firebaseConfig = {
     else{
       console.log("not here");
         body.style.visibility="visible";
-        // alert("Unauthorized access");
-        //window.location.href="401.html";
     }
 });
 }
-
-

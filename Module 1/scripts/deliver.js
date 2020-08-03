@@ -1,4 +1,3 @@
-
 var newprescription;
 var doctorDataToSend;
 function FetchPatientDetails(){
@@ -42,7 +41,6 @@ function FetchPatientDetails(){
     }
 }
 
-
 function FetchDoctorDetails(){
     isPermissionGranted=false;
     if(getuid()!=null){
@@ -75,8 +73,6 @@ function FetchDoctorDetails(){
             });
             }
 }
-
-
 
 function PdfRequest(){
     console.log("here in pdfReqquets");

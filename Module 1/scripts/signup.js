@@ -19,7 +19,6 @@ function gotoauthentication(){
   }).then(() => {
     updateData();   
   }).catch((error) => {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     alert(errorMessage)
@@ -132,17 +131,3 @@ function checkFile(){
       reader.readAsDataURL(file);
     }
   }
-
-//issue:
-// due to sleep onstatefunction of auth.js is called and it gives error because nav-bar is missing so we included
-//nav-bar email and it is hidden;
-
-
-
-
-
-
-
-
-
-

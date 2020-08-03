@@ -17,7 +17,7 @@ recognition.lang = "en-US";
 recognition.interimResults = true;
 recognition.continuous = true;
 let finalTranscript = "";
-//if(window.sessionStorage.hasOwnProperty('detailsToReuse')){
+
 if (window.sessionStorage.getItem("detailsToReuse") != null) {
   console.log("here in local storage");
   basicDetailsPatient = JSON.parse(
@@ -43,9 +43,6 @@ if (window.sessionStorage.getItem("detailsToReuse") != null) {
 }
 
 recognition.onresult = function (event) {
-  // var last = event.results.length - 1;
-  // command = event.results[last][0].transcript;
-  // document.getElementById("docSpeechTextBox").value= command;
   let interimTranscript = "";
   for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
     let transcript = event.results[i][0].transcript;
@@ -261,20 +258,6 @@ processDigiPres.addEventListener("click", (e) => {
       times: temptimedaysArray[i],
     };
   }
-  // formPrescription=ansFromDF.medicine.stringValue;
-  // formSymptom=ansFromDF.symptoms.stringValue;
-  // var agearray=ansFromDF.age.stringValue.split(" ");
-  // var formFirstName = ansFromDF.firstname.stringValue;
-  // var formLastName = ansFromDF.lastname.stringValue;
-  // var formGender = ansFromDF.Gender.stringValue;
-  // var formAge = agearray[0];
-  // var formDiagnosis = ansFromDF.disease.stringValue;
-  // document.getElementById("inputFirstName").value = formFirstName;
-  // document.getElementById("inputLastName").value = formLastName;
-  // document.getElementById("inputGender").value = formGender;
-  // document.getElementById("inputAge").value = formAge;
-  // document.getElementById("inputDiagnosis").value = formDiagnosis;
-  // document.getElementById("inputSymptoms").value = formSymptom;
   document.getElementById("inputPrescription").value = formPrescription;
   if (window.sessionStorage.getItem("detailsToReuse") != null) {
     console.log("here in local storage");
@@ -292,7 +275,6 @@ processDigiPres.addEventListener("click", (e) => {
 
 function EditDetails() {
   $("#digiPresFrom :input").prop("readonly", false);
-  //annyang.start();
   document.getElementById("checkListen").style.visibility = "visible";
 }
 
@@ -300,23 +282,6 @@ if (annyang) {
   console.log("here in annyang");
   var commands = {
     "edit medicine *tag": function (variable) {
-    //   console.log(variable + "-------times");
-    //   timesarray = variable.split("next");
-    //   i = 0;
-    //   finalprep = "";
-    //   for (x in prescriptionjson) {
-    //     prescriptionjson[x].times = timesarray[i];
-    //     console.log(x);
-    //     finalprep +=
-    //       x +
-    //       " for " +
-    //       prescriptionjson[x].days.toString() +
-    //       " days and " +
-    //       timesarray[i] +
-    //       " in a day" +
-    //       "\n";
-    //     i += 1;
-    //   }
     console.log("here in medicine");
       document.getElementById("inputPrescription").value = variable
       .split(" ")
@@ -375,16 +340,8 @@ if (annyang) {
   annyang.addCommands(commands);
   SpeechKITT.annyang({ autoRestart: true, continuous: false });
   annyang.debug();
-  // Define a stylesheet for KITT to use
   SpeechKITT.setStylesheet(
     "//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/themes/flat.css"
   );
-  //SpeechKITT.setRecognizedSentence()
-  // Render KITT's interface
   SpeechKITT.vroom();
-  // annyang.addCallback('result', function(userSaid, commandText, phrases) {
-  //     console.log(userSaid); // sample output: 'hello'
-  //     console.log(commandText); // sample output: 'hello (there)'
-  //     console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
-  //   });
 }

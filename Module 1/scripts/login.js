@@ -7,7 +7,6 @@ $("#logout").css('visibility', 'hidden');
 
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  //email = document.getElementById("exampleInputEmail").value;
   console.log(email);
   password = document.getElementById("exampleInputPassword").value;
   console.log(actualOTP);
@@ -103,7 +102,6 @@ function GenerateandSendOTP(){
 }
 }
 
-
 function generateOTP() {
   var digits = "0123456789";
   var otpLength = 5;
@@ -124,12 +122,3 @@ function validate() {
     return false;
   }
 }
-
-
-
-
-
-// Issues in loginForm.js:
-
-// 1. Warning: Firebase is already defined in the global scope. Please make sure
-// Firebase library is only loaded once

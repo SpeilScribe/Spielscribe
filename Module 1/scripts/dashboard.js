@@ -1,5 +1,3 @@
-///////////getting database::
-
 let doctorDatabase = db.collection(window.localStorage.getItem("uid"));
 console.log(doctorDatabase);
 var totalPatients = 0;
@@ -39,13 +37,10 @@ function fetchTotalPatients() {
     .catch((err) => {
       console.log("Error getting documents", err);
     });
-
-  //return totalPatients;
 }
 
 function fetchGenderDetails() {
   genderStats = {};
-  //get male patients
   let query1 = doctorDatabase
     .where("Gender", "==", "male")
     .get()
@@ -59,7 +54,6 @@ function fetchGenderDetails() {
       console.log("Error getting documents", err);
     });
 
-  //get female pateints and other
   let query2 = doctorDatabase
     .where("Gender", "==", "Female")
     .get()
@@ -287,105 +281,3 @@ function drawCharts() {
     },
   });
 }
-
-// console.log("hereeeeeeeeeeeeeeeee");
-
-// let AgeChart = document.getElementById('AgeChart').getContext('2d');
-// console.log("age chart",AgeChart);
-// graphs.addEventListener('click' , (e) => {
-// //alert( "ready!" );
-// console.log("hello");
-// isPermissionGranted=false;
-// console.log("in get uid:",getuid());
-// if(getuid()!=null){
-//     console.log("in uid");
-//         var doctoruid= getuid()  //'GnN3pRkQonefm7qCLXIbLMLEZfh2';
-//         let doctorDatabase=db.collection(doctoruid);
-//         console.log(doctorDatabase);
-//         let query = doctorDatabase.get()
-//             .then(snapshot => {
-//                 isPermissionGranted=true;
-//                 ageStats=fetchAge(doctorDatabase);
-//                 if (snapshot.empty) {
-//                     alert('NO Prescriptions');
-//                     return;
-//                 }
-//             })
-//             .catch(err => {
-//                 alert(err);
-//                 //window.location.href="dashboard.html";
-//             });
-// }
-// sleep(1569).then(() => {
-
-// if(isPermissionGranted){
-//     $("#abc").css('visibility', 'visible');
-//     Chart.defaults.global.defaultFontFamily = 'Lato';
-//     Chart.defaults.global.defaultFontSize = 18;
-//     Chart.defaults.global.defaultFontColor = '#777';
-//     console.log("visibility",$("#AgeChart").is(":visible"));
-//     console.log("before chart");
-//     //AgeChart.style.visibility='visible';
-//     console.log("visibility",$("#AgeChart").is(":visible"));
-//     console.log("age chart",AgeChart);
-//     let massPopChart = new Chart(AgeChart, {
-//       type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-//       data:{
-//         labels:['0-5', '5-15', '15-25', '25-35', '35-45', '45-55','55 above'],
-//         datasets:[{
-//           label:'Age wise Patients',
-//           data:[
-//             ageStats.age5,
-//             ageStats.age15,
-//             ageStats.age25,
-//             ageStats.age35,
-//             ageStats.age45,
-//             ageStats.age55,
-//             ageStats.ageAbove55
-//           ],
-//           //backgroundColor:'green',
-//           backgroundColor:[
-//             'rgba(255, 99, 132, 0.6)',
-//             'rgba(54, 162, 235, 0.6)',
-//             'rgba(255, 206, 86, 0.6)',
-//             'rgba(75, 192, 192, 0.6)',
-//             'rgba(153, 102, 255, 0.6)',
-//             'rgba(255, 159, 64, 0.6)',
-//             'rgba(255, 99, 132, 0.6)',
-//           ],
-//           borderWidth:1,
-//           borderColor:'#777',
-//           hoverBorderWidth:3,
-//           hoverBorderColor:'#000'
-//         }]
-//       },
-//       options:{
-//         title:{
-//           display:true,
-//           text:'Classification of Patients on basis of Age',
-//           fontSize:25
-//         },
-//         legend:{
-//           display:true,
-//           position:'right',
-//           labels:{
-//             fontColor:'#000'
-//           }
-//         },
-//         layout:{
-//           padding:{
-//             left:0,
-//             right:0,
-//             bottom:0,
-//             top:0
-//           }
-//         },
-//         tooltips:{
-//           enabled:true
-//         }
-//       }
-//     });
-// console.log("agter chart");
-// }
-// });
-// });

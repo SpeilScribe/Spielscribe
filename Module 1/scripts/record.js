@@ -1,4 +1,3 @@
-
 var isFname=false;
 var isGender=false;
 var isDisease=false;
@@ -18,7 +17,6 @@ function searchRecord(){
     if($('#filterFirstName').val()!="" && $('#filterFirstName')!=null){
         isFname=true;
         filterobject.FirstName=$('#filterFirstName').val();
-        //filterobject.name="Shreeya";
     }
     else{
         isFname=false;
@@ -52,11 +50,9 @@ function searchRecord(){
         isGender=false;
     }
     console.log(filterobject);
-    // var duid=getuid();
-    // console.log(duid);
     isPermissionGranted=false;
     if(getuid()!=null){
-        var doctoruid= getuid()  //'GnN3pRkQonefm7qCLXIbLMLEZfh2';
+        var doctoruid= getuid()
         let doctordatabase=db.collection(doctoruid);
         console.log(doctordatabase);
         let query = doctordatabase.get()
@@ -73,9 +69,6 @@ function searchRecord(){
                 window.location.href="dashboard.html";
             });
     }
-    
-    
-  
 }
 
 
@@ -106,7 +99,6 @@ function applyfilter(doctordatabase){
                     return;
                 }
                 var i=0;
-                //console.log("length::",snapshot.size);
                 snapshot.forEach(doc => {
                     i=i+1;
                     let s = doc.data();
@@ -205,7 +197,6 @@ function applyfilter(doctordatabase){
     }
     
     //medicine
-    
     if(!isFname && !isAge && !isDisease && isLname && !isGender){
         console.log("here");
     let query = doctordatabase.where('LastName', '==', filterobject['LastName']).get()
@@ -449,9 +440,5 @@ function applyfilter(doctordatabase){
                             .catch(err => {
                                 console.log('Error getting documents', err);
                             });
-                }
-
-
-    
-    
-    }
+                }    
+}
