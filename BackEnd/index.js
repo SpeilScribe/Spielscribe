@@ -1,14 +1,11 @@
 const express =require('express');
 const app=express();
-// const cors=require('cors');
 app.use(express.json());
 const port = 3000
 const dialogflow = require('dialogflow');
 const uuid = require('uuid');
 var dfReplyFields;
 var nodemailer = require('nodemailer');
-//const { constants } = require("buffer");
-//raghav biyani 21 year old male cancer ache asprin 
 
 app.use(function (req, res, next){
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -57,8 +54,6 @@ res.send("hello api");
 });
 
 app.post('/prescription',(req,res)=>{
-    // console.log(req.body);
-    // console.log(req.body.message);
     runSample(req.body.message);
     sleep(5000).then(() => {
     res.send(JSON.stringify(dfReplyFields));
@@ -136,19 +131,7 @@ function sendEmail(Email){
 }
 
 
-
-
-
-
-
-
-////////////////////////////////////////////////////pdf generation
-
-//---------------------------------------------------------------------------------------
-// Copyright (c) 2001-2019 by PDFTron Systems Inc. All Rights Reserved.
-// Consult legal.txt regarding legal and license information.
-//---------------------------------------------------------------------------------------
-function generatePdf(patientDetails,doctorDetails){  //PD for paitend details and DD for doctors and passed as jason onject.
+function generatePdf(patientDetails,doctorDetails){
   global.PNG = require("png-js");
   global.window = {
     document: {
@@ -169,7 +152,6 @@ function generatePdf(patientDetails,doctorDetails){  //PD for paitend details an
   let buff = fs.readFileSync("logo.png");
   let Logo = buff.toString("base64");
 
-  //let buffs = fs.readFileSync("arrow.png");
   let Signature = doctorDetails.SignatureURL;
 
   var jsPDF = require("jspdf");
@@ -178,7 +160,6 @@ function generatePdf(patientDetails,doctorDetails){  //PD for paitend details an
   var imgData = Logo;
   var signData = Signature;
 
-  //prescription data
   const pname = patientDetails.FirstName + " " + patientDetails.LastName;
   const age = patientDetails.Age.toString();
   const gen = patientDetails.Gender;
@@ -269,31 +250,20 @@ function generatePdf(patientDetails,doctorDetails){  //PD for paitend details an
       const main = async () => {
         console.log("Beginning Test");
         let ret = 0;
-        // Relative path to the folder containing test files.
-        //const inputUrl = 'B:\\6th SEM\\PDF\\JSPDF\\';
         const inputUrl = "./";
         let doc = null;
-        // Example 1:
-        // secure a PDF document with password protection and adjust permissions
         try {
-          //console.log('Running Sample 1');
-          // eslint-disable-next-line no-unused-vars
           let islocked = false;
           doc = await PDFNet.PDFDoc.createFromFilePath(
             inputUrl + "document.pdf"
           );
           doc.initSecurityHandler();
           islocked = true;
-          //console.log('PDFNet and PDF document initialized and locked');
-
-          const performOperation = true; // optional parameter
+          const performOperation = true;
 
           const newHandler = await PDFNet.SecurityHandler.createDefault();
 
-          // Set a new password required to open a document
           newHandler.changeUserPasswordUString(patientDetails.Password);
-          //console.log("Setting password to 'test'");
-
           // Set Permissions
           newHandler.setPermission(
             PDFNet.SecurityHandler.Permission.e_print,
@@ -303,13 +273,8 @@ function generatePdf(patientDetails,doctorDetails){  //PD for paitend details an
             PDFNet.SecurityHandler.Permission.e_extract_content,
             true
           );
-
           // Note: document takes the ownership of newHandler.
           doc.setSecurityHandler(newHandler);
-
-          // Save the changes
-          //console.log('Saving modified file...');
-
           await doc.save(
             "./document.pdf",
             PDFNet.SDFDoc.SaveOptions.e_linearized
@@ -341,5 +306,4 @@ function generatePdf(patientDetails,doctorDetails){  //PD for paitend details an
   else{
     return -1;
   }
-  
   }
