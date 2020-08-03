@@ -1,0 +1,27 @@
+{
+  "name": "sihexpressmosh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pdftron/pdfnet-node": "^7.1.0-2",
+    "@types/dialogflow": "^4.0.4",
+    "atob": "^2.1.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dialogflow": "^1.2.0",
+    "express": "^4.17.1",
+    "hummus": "^1.0.108",
+    "jspdf": "^1.5.3",
+    "lodash": "^4.17.15",
+    "nodemailer": "^6.4.10",
+    "png-js": "^1.0.0",
+    "uuid": "^7.0.2"
+  }
+}
