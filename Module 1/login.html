@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Basic -->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
@@ -30,29 +30,17 @@
 	<link rel="stylesheet" href="css/pageLoader.css">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
 
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-		https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
-
-	
 	<!-- Start header -->
 	<header class="top-header">
 		<nav class="navbar header-nav navbar-expand-lg">
@@ -115,15 +103,11 @@
 							<input type="text" class="form-control" id="inputOTP" placeholder="Enter otp" required>
 						</div>
 					</div>
-					<!-- <button type="button" id="sendOtp" class="btn btn-success">SEND OTP</button> -->
 					<button href="" class="btn new-btn-d br-2" id="sendOtp" style="color: black; font-weight: bolder;" onclick="sendOTP()">SEND OTP</button>
-					<!-- <button type="button" id="sendOtpAgain" class="btn btn-outline-success">RESEND</button> -->
 					<button id="sendOtpAgain" class="btn new-btn-d br-2" style="color: black; font-weight: bolder;" onclick="sendOTP()">RESEND</button>
 					<button type="button" id="logout" class="btn btn-outline-success" style="display:none;">logout</button>
-					<!-- <button type="submit" class="btn btn-success">LOGIN</button> -->
 					<button type="submit" class="btn new-btn-d br-2" style="color: black; font-weight: bolder;">LOGIN</button>
 				  </form>
-				  <!-- <img src="images/gallery-loginBelow.jpg" alt="" style="padding-top: 5px;"> -->
 				</div>
 
 				  <div class="col-lg-6">
