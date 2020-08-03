@@ -54,7 +54,7 @@
     <![endif]-->
 
 </head>
-<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98" onload="checkAccess()" style="visibility:hidden;">
 
 	
 	<!-- Start header -->
@@ -97,12 +97,20 @@
 			<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
 			<a class="btn btn-outline-dark btn-lg" id="btnGiveCommand" role="button" style="margin-bottom: 10px;"><i class="fa fa-microphone"></i> RECORD</a>
 			<a class="btn btn-outline-dark btn-lg" id="btnStopCommand" role="button" style="margin-bottom: 10px;"><i class="fa fa-stop"></i> STOP</a>
+			<a class="btn btn-outline-dark btn-lg" id="btnPauseCommand" role="button" style="margin-bottom: 10px;"><i class="fa fa-plus"></i> APPEND</a>
+			<a class="btn btn-outline-dark btn-lg" id="btnClearCommand" role="button" style="margin-bottom: 10px;"><i class="fa fa-trash"></i>CLEAR</a>
 			<a class="btn btn-outline-dark btn-lg" id="btnfetchCommand" role="button" style="margin-bottom: 10px;"><i class="fa fa-database"></i> Already Recorded</a>
 			<div class="input-group input-group-lg">
 				<div class="input-group-prepend">
 				  <span class="input-group-text" id="message">Speech:</span>
 				</div>
 				<textarea  type="text" id="docSpeechTextBox" placeholder="Record something.." class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></textarea>
+			</div>
+			<div class="input-group input-group-lg">
+				<div class="input-group-prepend">
+				  <span class="input-group-text" id="message">OLD Speech:</span>
+				</div>
+				<textarea  type="text" id="AppenddocSpeechTextBox" placeholder="Append Something.." class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></textarea>
 			</div>
 			<hr>
 
@@ -143,35 +151,35 @@
 					
 					<div class="form-group">
 					  <label for="inputSymptoms">Symptoms</label>
-					  <input type="text" class="form-control" id="inputSymptoms" placeholder="Symptoms.." value="">
+					  <input type="text" class="form-control" id="inputSymptoms" placeholder="Symptoms.." value="" style="height:100px;">
 					</div>
 			
 					<div class="form-group">
 					  <label for="inputDiagnosis">Diagnosis</label>
-					  <input type="text" class="form-control" id="inputDiagnosis" placeholder="Diagnosis.." value="">
+					  <input type="text" class="form-control" id="inputDiagnosis" placeholder="Diagnosis.." value="" style="height:100px;" >
 					</div>
 					
 					<div class="form-group">
 						<div class="mb-3">
 							<label for="inputPrescription">Prescription</label>
-							<textarea class="form-control " id="inputPrescription" placeholder="Prescription.." required></textarea>
+							<textarea class="form-control " id="inputPrescription" style="height:150px;" placeholder="Prescription.." required></textarea>
 						  </div>
 					</div>
 					
 					<div class="form-group">
 						<label for="inputAdvice">Advice</label>
-						<input type="text" class="form-control" id="inputAdvice" placeholder="Advice.." value="">
+						<input type="text" class="form-control" id="inputAdvice" placeholder="Advice.." value="Stay hygienic">
 					</div>
 					<div class="form-row">
 					  
 					<div class="form-group col-md-4">
 					  <label for="inputPatientEmail">Delivery email address</label>
-					  <input type="email" class="form-control" id="inputPatientEmail" placeholder="Patient's email address" value="">
+					  <input type="email" class="form-control" id="inputPatientEmail" placeholder="Patient's email address" value="raghavbiyani12.rb@gmail.com">
 					</div>
 			
 					<div class="form-group col-md-4">
 					  <label for="inputMobileNumber">Mobile-Number</label>
-					  <input type="text" class="form-control" id="inputMobileNumber" placeholder="Mobile-Number" value="0">
+					  <input type="text" class="form-control" id="inputMobileNumber" placeholder="Mobile-Number" value="9422624011">
 					</div>
 					</div>
 					<button type="button" class="new-btn-d br-2" onclick="FetchPatientDetails()" style="color: black; font-weight: bolder; font-size: medium;">SEND</button>
@@ -215,6 +223,8 @@
 	<script src="js/images-loded.min.js"></script>	
 	<script src="js/custom.js"></script>
 	
+	<script src="scripts/auth.js"></script>
 	<script src="scripts/speechToText.js"></script>
+	<script src="scripts/deliver.js"></script>
 </body>
 </html>
