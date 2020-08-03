@@ -3,6 +3,7 @@
 We are team CodeGeeks, finalist of Smart India Hackathon.
 
 Problem Statement:
+Organization name: HealthRx Bajaj FinServ
 Design an app to write formatted prescriptions based on dictation from doctor.
 The app should provide facility to sign the prescription and also
 send to the patient directly on his or her phone and email id.
